@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function EventDetails() {
   const { id } = useParams();
@@ -19,9 +20,7 @@ function EventDetails() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/events/${id}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/api/events/${id}`);
 
         setEvent(response.data);
       } catch (error) {
@@ -65,7 +64,7 @@ function EventDetails() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/bookings",
+        `${API_BASE_URL}/api/bookings`,
         {
           eventId: event._id,
           quantity: quantity

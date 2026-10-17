@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function EditEvent() {
   const { id } = useParams();
@@ -35,9 +36,7 @@ function EditEvent() {
       }
 
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/events/${id}`
-        );
+        const response = await axios.get(`${API_BASE_URL}/api/events/${id}`);
 
         const event = response.data;
 
@@ -120,15 +119,7 @@ function EditEvent() {
         totalTickets: Number(formData.totalTickets)
       };
 
-      await axios.put(
-        `http://localhost:5000/api/events/${id}`,
-        eventData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
+      await axios.put(`${API_BASE_URL}/api/events/${id}`, data);
 
       navigate("/my-events");
     } catch (error) {

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function MyTickets() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function MyTickets() {
 
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/bookings/my",
+          `${API_BASE_URL}/api/bookings/my`,
           {
             headers: {
               Authorization: `Bearer ${token}`

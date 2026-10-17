@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import axios from "axios";
+import API_BASE_URL from "../config";
 
 import {
   useCity
@@ -68,9 +69,7 @@ function Navbar() {
 
       try {
 
-        const response =
-          await axios.get(
-            "http://localhost:5000/api/auth/me",
+        const response = await axios.get(`${API_BASE_URL}/api/auth/me`,
             {
               headers: {
                 Authorization:

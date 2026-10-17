@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function BookingDetails() {
   const { id } = useParams();
@@ -21,9 +22,7 @@ function BookingDetails() {
       }
 
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/bookings/${id}`,
-          {
+        const response = await axios.get(`${API_BASE_URL}/api/bookings/${id}`, {
             headers: {
               Authorization: `Bearer ${token}`
             }

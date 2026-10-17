@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config";
 
 import Navbar from "../components/Navbar";
 import EventCard from "../components/EventCard";
 import { useCity } from "../context/CityContext.jsx";
+
 
 const categories = [
   "Movies",
@@ -30,9 +32,7 @@ function Home() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/events"
-        );
+        const response = await axios.get(`${API_BASE_URL}/api/events`);
 
         setEvents(response.data);
       } catch (error) {

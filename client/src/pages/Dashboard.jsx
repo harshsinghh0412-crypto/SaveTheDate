@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Dashboard() {
 
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/events/my/analytics",
+          "${API_BASE_URL}",
           {
             headers: {
               Authorization: `Bearer ${token}`

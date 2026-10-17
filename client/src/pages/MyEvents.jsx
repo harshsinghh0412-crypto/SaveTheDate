@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function MyEvents() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function MyEvents() {
 
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/events/my",
+          "${API_BASE_URL}/api/events/my",
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -76,7 +77,7 @@ function MyEvents() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/events/${event._id}`,
+        `${API_BASE_URL}/api/events/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

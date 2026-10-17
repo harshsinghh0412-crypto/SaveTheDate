@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import API_BASE_URL from "../config";
 
 function CreateEvent() {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ function CreateEvent() {
       };
 
       await axios.post(
-        "http://localhost:5000/api/events",
+        `${API_BASE_URL}/api/events`,
         eventData,
         {
           headers: {
